@@ -1,10 +1,3 @@
-from collections import defaultdict
-
-
-def solve():
-    pass
-
-
 def main():
     x_min, x_max = 48, 70
     y_min, y_max = -189, -148
