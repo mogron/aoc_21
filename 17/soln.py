@@ -14,7 +14,7 @@ def main():
     y_pos_max = 0
     total = 0
     for initial_y_vel in range(y_min - 1, -y_min + 1):
-        for initial_x_vel in range(1, 71):
+        for initial_x_vel in range(1, x_max + 1):
             x = 0
             y = 0
             y_pos_max_traj = 0
