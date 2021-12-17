@@ -1,6 +1,15 @@
+import re
+
+
 def main():
-    x_min, x_max = 48, 70
-    y_min, y_max = -189, -148
+    with open("input.txt") as f:
+        inp = f.readlines()[0]
+
+    search = re.search("x=(.*)\.\.(.*), y=(.*)\.\.(.*)", inp)
+    x_min = int(search.group(1))
+    x_max = int(search.group(2))
+    y_min = int(search.group(3))
+    y_max = int(search.group(4))
 
     y_pos_max = 0
     total = 0
