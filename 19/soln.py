@@ -85,23 +85,6 @@ def make_rotation_functions() -> list[RotationFunction]:
     return reduced_rotations
 
 
-def parse_scanners(inp: list[str]) -> list[Scanner]:
-    scanners = []
-    scanner: Scanner = set()
-    for line in inp:
-        if line == "" or line.startswith("---"):
-            if scanner:
-                scanners.append(scanner)
-                scanner = set()
-            continue
-        x, y, z = map(int, line.split(","))
-        p = Point(x, y, z)
-        scanner.add(p)
-    if scanner:
-        scanners.append(scanner)
-    return scanners
-
-
 def compute_pairwise_distances(scanner: Scanner) -> set[int]:
     return set([l1(a, b) for a, b in combinations(scanner, 2)])
 
@@ -153,6 +136,23 @@ def process(scanners: list[Scanner]) -> tuple[list[Scanner], int]:
         q.append(t_beacons)
     max_dist = max(l1(a, b) for a, b in combinations(scanner_positions, 2))
     return q, max_dist
+
+
+def parse_scanners(inp: list[str]) -> list[Scanner]:
+    scanners = []
+    scanner: Scanner = set()
+    for line in inp:
+        if line == "" or line.startswith("---"):
+            if scanner:
+                scanners.append(scanner)
+                scanner = set()
+            continue
+        x, y, z = map(int, line.split(","))
+        p = Point(x, y, z)
+        scanner.add(p)
+    if scanner:
+        scanners.append(scanner)
+    return scanners
 
 
 def main():
